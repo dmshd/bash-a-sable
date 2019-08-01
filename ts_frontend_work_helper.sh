@@ -9,7 +9,7 @@ if [[ $# != 2 ]]; then
 	# installer sass ?
 	if [[ $1 == isass ]]; then
         apt-get install rubygems && apt-get install rubygems-integration && apt install ruby-sass
-    else
+    	else
     	echo "$err Tu dois entrer deux paramètres (./$0.sh [commande] [parametre])."
 	fi
 # si deux parametres
