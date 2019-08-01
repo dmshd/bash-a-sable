@@ -29,7 +29,6 @@ elif [[ $# == 2 ]]; then
                     echo "$err sass n'est pas installé. (./$0.sh isass     pour l'installer)"
                 else
                     sass /usr/share/publik/themes/imio/static/$2/style.scss /usr/share/publik/themes/imio/static/$2/style.css
-                    echo "$ok style.css de /$2 compilé."
                 fi
             # pas de style.scss 
             else
