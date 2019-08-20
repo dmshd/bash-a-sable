@@ -3,7 +3,7 @@
 
   # feedbacks
   msgOutil="🛠️  Outil local_téléservices >"
-  ## listeOptions="\n   Les options sont : \n      🔥  -s | --save \n      🔥  -r | --restore \n      🔥  -ss | --sass"
+ listeOptions='\n   Les options sont : \n      🔥  -s nom_commune | --save nom_commune \n      🔥  -r nom_commune | --restore nom_commune \n      🔥  -i sass | --install sass \n      🔥  -e nom_commune | --edit nom_commune \n         | change le chemin import publik-base dans styles.scss'
   eropt="$msgOutil $er Je ne reconnais pas cette option."
   ernoopt=""
   erarg="$msgOutil $er Il manque un argument."
@@ -69,6 +69,9 @@ if [ "$1" != "" ]; then
       else
        echo "$erarg"
       fi
+      ;;
+    -h | --help )
+      echo -e "$msgOutil $listeOptions "
       ;;
     #-ss | --sass )
     #  if [ ! -e style.scss ]
