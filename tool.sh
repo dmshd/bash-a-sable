@@ -19,14 +19,15 @@ if [ "$1" != "" ]; then
     -s | --save )
       if [ ! -z $2 ]; then
         if [ -e /usr/share/publik/themes/imio/static/$2 ]; then
+          echo "🔎 Je cherche l'occurence @import '../../../publik-base/static/includes/publik'; dans le 📄  styles.scss de 📂  binche"
           if [ grep "@import '../../../publik-base/static/includes/publik';" ]; then
-            echo "$ok Je restore le chemin d'import du styles.scss ..."
+            echo "$ok Je restore le chemin d'import du 📄  styles.scss ..."
             sed -i "s|../../../publik-base/|../../publik-base-theme/|g" /usr/share/publik/themes/imio/static/$2/style.scss
-            sleep 1s
+            sleep 0.6
           fi
-          echo "$ok \n Copie de : /usr/share/publik/themes/imio/static/${bold}$2${normal} \n vers : /opt/publik/scripts/imio-publik-themes/static/ "
-          sleep 0.5
-          cp /usr/share/publik/themes/imio/static/$2 /opt/publik/scripts/imio-publik-themes/static/$2
+          echo "$ok  Je copie 📂 /usr/share/publik/themes/imio/static/${bold}$2${normal}  vers 📂 /opt/publik/scripts/imio-publik-themes/static/ "
+          sleep 0.6
+          cp -r /usr/share/publik/themes/imio/static/$2 /opt/publik/scripts/imio-publik-themes/static/$2
         else
           echo "$msgOutil $er /usr/share/publik/themes/imio/static/${bold}$2${normal} n'existe pas"
         fi
@@ -37,11 +38,11 @@ if [ "$1" != "" ]; then
     -r | --restore )
       if [ ! -z $2 ]; then
         if [ -e /opt/publik/scripts/imio-publik-themes/static/$2 ]; then
-          echo "$ok \n Copie de : /opt/publik/scripts/imio-publik-themes/static/${bold}$2${normal} \n vers : /usr/share/publik/themes/imio/static/ "
-          sleep 0.5
-          cp /opt/publik/scripts/imio-publik-themes/static/$2 /usr/share/publik/themes/imio/static/$2
+          echo "$ok Je copie 📂 /opt/publik/scripts/imio-publik-themes/static/${bold}$2${normal} vers 📂 /usr/share/publik/themes/imio/static/ "
+          sleep 0.6
+          cp -r /opt/publik/scripts/imio-publik-themes/static/$2 /usr/share/publik/themes/imio/static/
         else
-          echo "$msgOutil $er 📂  /usr/share/publik/themes/imio/static/${bold}$2${normal} n'existe pas"
+          echo "$msgOutil $er 📂  /opt/publik/scripts/imio-publik-themes/static/${bold}$2${normal} n'existe pas"
         fi
       else
         echo $erarg
@@ -49,7 +50,7 @@ if [ "$1" != "" ]; then
       ;;
     -e | --edit )
       if [ ! -z $2 ]; then
-        if [ grep "@import '../../publik-base-theme/static/includes/publik';" /usr/share/publik/themes/imio/static/$2/style.scss ]; then
+        if grep --color -nri "@import '../../publik-base-theme/static/includes/publik';" /usr/share/publik/themes/imio/static/$2/style.scss; then
           sed -i "s|../../publik-base-theme/|../../../publik-base/|g" /usr/share/publik/themes/imio/static/$2/style.scss
           echo "$ok le chemin de l'import de ../../publik-base-theme/ dans 📄  styles.scss a été modifié en ../../../publik-base/"
         else 
