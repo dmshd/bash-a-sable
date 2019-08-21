@@ -1,19 +1,19 @@
 #!/bin/bash
-# options de ligne de commande quand on execute le script
-
-  # feedbacks
-  msgOutil="🛠️  Outil local_téléservices >"
- listeOptions='\n   Les options sont : \n      🔥  -s nom_commune | --save nom_commune \n      🔥  -r nom_commune | --restore nom_commune \n      🔥  -i sass | --install sass \n      🔥  -e nom_commune | --edit nom_commune \n         | change le chemin import publik-base dans styles.scss'
-  eropt="$msgOutil $er Je ne reconnais pas cette option."
-  ernoopt=""
-  erarg="$msgOutil $er Il manque un argument."
-  ## visual feedbacks
-  bold=$(tput bold)
-  normal=$(tput sgr0)
-  er="❗ "
-  ok="✅ "
-
-#si option on boucle
+# Docker localteleservices
+## faciliter l'utilisation de sass 
+## options de ligne de commande quand on execute le script
+### visual feedbacks
+bold=$(tput bold)
+normal=$(tput sgr0)
+er="❗ "
+ok="✅ "
+### feedbacks
+msgOutil="🛠️  Outil local_téléservices >"
+listeOptions='\n   Les options sont : \n      🔥  -s nom_commune | --save nom_commune \n      🔥  -r nom_commune | --restore nom_commune \n      🔥  -i sass | --install sass \n      🔥  -e nom_commune | --edit nom_commune \n         | change le chemin import publik-base dans styles.scss'
+eropt="$msgOutil $er Je ne reconnais pas cette option."
+ernoopt=""
+erarg="$msgOutil $er Il manque un argument."
+## si option on boucle
 if [ "$1" != "" ]; then
   case $1 in 
     -s | --save )
@@ -84,7 +84,6 @@ if [ "$1" != "" ]; then
     #  ;;
     * )
       echo $eropt
-      break
       ;;
   esac
 else 
